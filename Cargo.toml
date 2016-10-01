@@ -1,0 +1,11 @@
+[package]
+name = "curryrs"
+version = "0.1.0"
+authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
+
+[lib]
+name = "curryrs"
+crate-type = ['staticlib']
+
+[dependencies]
+libc = "0.2.16"

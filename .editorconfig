@@ -1,0 +1,11 @@
+root = true
+
+[Makefile]
+indent_style = tab
+
+[*.rs]
+indent_style = tab
+
+[*.hs]
+indent_style = space
+indent_size = 2
