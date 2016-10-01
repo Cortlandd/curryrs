@@ -3,4 +3,4 @@ module Curryrs where
 
 import Foreign.C.Types
 
-foreign import ccall unsafe "double_input" double_input :: CInt -> IO CInt
+foreign import ccall "double_input" double_input :: CInt -> CInt

@@ -11,7 +11,5 @@ tests = testGroup "Tests" [unitTests]
 
 unitTests = testGroup "Unit Tests"
   [ testCase "Check that double_input works" $
-    do
-    x <- double_input 3
-    x @?= 6
+    double_input 3 @?= 6
   ]
