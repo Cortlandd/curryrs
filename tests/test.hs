@@ -4,6 +4,8 @@ import Curryrs
 import Test.Tasty
 import Test.Tasty.HUnit
 
+foreign import ccall "double_input" doubleInput :: I32 -> I32
+
 main :: IO ()
 main = defaultMain tests
 
