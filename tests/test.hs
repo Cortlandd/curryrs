@@ -1,4 +1,5 @@
 module Main where
+
 import Curryrs
 import Test.Tasty
 import Test.Tasty.HUnit
@@ -11,5 +12,5 @@ tests = testGroup "Tests" [unitTests]
 
 unitTests = testGroup "Unit Tests"
   [ testCase "Check that double_input works" $
-    double_input 3 @?= 6
+    doubleInput 3 @?= 6
   ]
