@@ -14,8 +14,15 @@ hsffi: cargo
 cargo:
 	@[ -x ${RUSTC} ] || ($(ECHO) "ERROR: rust compiler (rustc) not found" && exit 1)
 	@$(CARGO) build --release
-	@ln -fs target/release/libcurryrs.a  libcurryrs.a
+	cd rtest
+	@$(CARGO) build --release
+	cd ..
 
+test: build
+	cd rtest
+	@$(CARGO) test
+	cd ..
+	cabal test
 
 clean:
 	@$(CARGO) clean
