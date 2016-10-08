@@ -20,6 +20,7 @@ test: build
 
 doc:
 	@cargo doc
+	@stack haddock
 
 clean:
 	@cargo clean

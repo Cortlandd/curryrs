@@ -1,7 +1,7 @@
 name:                curryrs
 version:             0.1.0.0
 synopsis:            Easy to use FFI Bridge for using Rust in Haskell
-description:         Please see README.md
+description:         Please see README.md for more information on how to use this library.
 homepage:            https://github.com/mgattozzi/curryrs#readme
 license:             OtherLicense
 license-files:       LICENSE-MIT, LICENSE-APACHE
@@ -14,11 +14,11 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Curryrs
+  exposed-modules:     Types
+                     , Convert
   build-depends:       base >= 4.7 && < 5
                      , mtl  >= 2.2 && < 2.3
   default-language:    Haskell2010
-  other-modules:       Types
 
 test-suite curryrs-test
   type:                exitcode-stdio-1.0

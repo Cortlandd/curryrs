@@ -1,3 +1,7 @@
+-- |
+-- Definitions of each FFI type that can be used in Rust. These are
+-- standardized accross the Rust and Haskell Curryrs library for easy
+-- translation of function headers between the two.
 module Types (
     module Foreign.C.Types
   , module Foreign.C.String
@@ -14,54 +18,62 @@ module Types (
   , F32
   , F64
   , Boolean
-  , fromBoolean
-  , ConversionError
   ) where
 
 import Foreign.C.Types
 import Foreign.C.String
-import Control.Monad.Except
-import Control.Monad.Error
 
 -- We are only defining types that map to Rust types here
 -- We don't need the full array of C types in Rust
 
--- String and Character Types
+-- |
+-- Used to represent Char in both languages
 type Chr = CChar
+
+-- |
+-- Used to represent Strings in both languages
 type Str = CString
 
--- Unsigned Integer Types
+-- |
+-- Used to represent 8 bit unsigned numbers in both languages
 type U8  = CUChar
+
+-- |
+-- Used to represent 16 bit unsigned numbers in both languages
 type U16 = CUShort
+
+-- |
+-- Used to represent 32 bit unsigned numbers in both languages
 type U32 = CUInt
+
+-- |
+-- Used to represent 64 bit unsigned numbers in both languages
 type U64 = CULong
 
--- Signed Integer Types
+-- |
+-- Used to represent 8 bit signed numbers in both languages
 type I8  = CSChar
+
+-- |
+-- Used to represent 16 bit signed numbers in both languages
 type I16 = CShort
+
+-- |
+-- Used to represent 32 bit signed numbers in both languages
 type I32 = CInt
+
+-- |
+-- Used to represent 64 bit signed numbers in both languages
 type I64 = CLong
 
--- Floating Point Types
+-- |
+-- Used to represent 32 bit floating point numbers in both languages
 type F32 = CFloat
+
+-- |
+-- Used to represent 64 bit floating point numbers in both languages
 type F64 = CDouble
 
--- Boolean
+-- |
+-- Used to represent Booleans in both languages
 type Boolean = CUChar
-
--- This method tries to to turn a number returned
--- by FFI into a Bool. Since We are coming from
--- FFI this is wrapped in an Either in case things
--- go wrong but this shouldn't be the case if the Curryrs
--- library is used properly
-fromBoolean :: Boolean -> Either ConversionError Bool
-fromBoolean x = case x of
-  0 -> (Right False)
-  1 -> (Right True)
-  _ -> (Left NonBoolean)
-
-data ConversionError = NonBoolean
-  deriving Eq
-
-instance Show ConversionError where
-  show NonBoolean = "Failed to extract a boolean value in the use of fromBoolean. Number was not 0 or 1"
