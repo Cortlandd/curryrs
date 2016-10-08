@@ -15,6 +15,9 @@ pub use std::os::raw::{
 };
 
 /// FFI Version of char
+pub type Boolean = c_uchar;
+
+/// FFI Version of char
 pub type Chr = c_char;
 
 /// FFI version of str
