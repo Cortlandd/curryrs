@@ -1,29 +1,29 @@
-CARGO	= cargo
-ECHO	= echo
-CABAL	= cabal
+build: hs cargo
+	@echo "Libraries built"
 
-
-build: hsffi
-	@$(ECHO) "Libraries built"
-
-hsffi: cargo
-	@$(ECHO) "Building using Cabal"
-	@$(CABAL) build
-
+hs:
+	@  (command -v stack 1,2>/dev/null && stack build) \
+	|| (command -v cabal 1,2>/dev/null && cabal build) \
+	|| (echo "ERROR: cabal or stack not found" && exit 1)
 
 cargo:
-	@[ -x ${RUSTC} ] || ($(ECHO) "ERROR: rust compiler (rustc) not found" && exit 1)
-	@$(CARGO) build --release
-	cd rtest
-	@$(CARGO) build --release
-	cd ..
+	@[ -x ${RUSTC} ] || (echo "ERROR: rust compiler (rustc) not found" && exit 1)
+	@cargo build --release
+	@cargo build --release --manifest-path=rtest/Cargo.toml
 
 test: build
-	cd rtest
-	@$(CARGO) test
-	cd ..
-	cabal test
+	@cargo test
+	@cargo test --manifest-path=rtest/Cargo.toml
+	@  (command -v stack 1,2>/dev/null && stack test) \
+	|| (command -v cabal 1,2>/dev/null && cabal test) \
+	|| (echo "ERROR: cabal or stack not found" && exit 1)
+
+doc:
+	@cargo doc
 
 clean:
-	@$(CARGO) clean
+	@cargo clean
+	@  (command -v stack 1,2>/dev/null && stack clean) \
+	|| (command -v cabal 1,2>/dev/null && cabal clean) \
+	|| (echo "ERROR: cabal or stack not found" && exit 1)
 	@rm -rf *~ *.hi *.o *.so target/ G* *.a
