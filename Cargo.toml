@@ -2,6 +2,13 @@
 name = "curryrs"
 version = "0.1.0"
 authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
+description = "Utilities making Rust/Haskell FFI easier"
+documentation = "https://docs.rs/curryrs/0.1.0/curryrs/"
+homepage = "https://github.com/mgattozzi/curryrs"
+repository = "https://github.com/mgattozzi/curryrs"
+readme = "README.md"
+keywords = ["FFI", "Haskell"]
+license = "MIT/APACHE-2.0"
 
 # These are needed for the Haskell source code
 # but are dead weight for the Rust Package
