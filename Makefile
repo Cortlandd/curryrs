@@ -20,7 +20,9 @@ test: build
 
 doc:
 	@cargo doc
-	@stack haddock
+	@  (command -v stack 1,2>/dev/null && stack haddock) \
+	|| (command -v cabal 1,2>/dev/null && cabal haddock) \
+	|| (echo "ERROR: cabal or stack not found" && exit 1)
 
 clean:
 	@cargo clean
