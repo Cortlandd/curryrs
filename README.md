@@ -13,7 +13,7 @@ In your Rust project in Cargo.toml:
 
 ```toml
 [dependencies]
-curryrs = ^"0.1.0"
+curryrs = "^0.1.0"
 ```
 
 In your Haskell project in it's cabal file:
