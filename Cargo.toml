@@ -8,7 +8,7 @@ homepage = "https://github.com/mgattozzi/curryrs"
 repository = "https://github.com/mgattozzi/curryrs"
 readme = "README.md"
 keywords = ["FFI", "Haskell"]
-license = "MIT/APACHE-2.0"
+license = "MIT/Apache-2.0"
 
 # These are needed for the Haskell source code
 # but are dead weight for the Rust Package
